@@ -65,10 +65,10 @@ func (s *Scanner) Next() ([]byte, error) {
 		i := bytes.Index(s.buf.Bytes(), []byte("\nFrom "))
 		if i < 0 {
 			nr, err := io.Copy(&s.buf, io.LimitReader(s.r, 1<<20))
-			if nr == 0 {
-				break
-			} else if err != nil {
+			if err != nil {
 				return nil, err
+			} else if nr == 0 {
+				break
 			}
 			continue
 		}
@@ -87,6 +87,11 @@ func (s *Scanner) Next() ([]byte, error) {
 	s.end += int64(len(s.cur))
 	return s.cur, nil
 }
+
+// Span reports the starting and ending offsets of the most recent message
+// reported by a successful call to [Scanner.Next] in the input. If Next has
+// not been called, it returns 0, 0.
+func (s *Scanner) Span() (from, to int64) { return s.pos, s.end }
 
 // A Message is the parsed representation of a mail message from an mbox file.
 type Message struct {
