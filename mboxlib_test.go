@@ -9,6 +9,7 @@ import (
 
 	"github.com/creachadair/mboxlib"
 	"github.com/creachadair/mds/mstr"
+	"github.com/google/go-cmp/cmp"
 
 	_ "embed"
 )
@@ -22,27 +23,28 @@ var testData []byte
 func TestScan(t *testing.T) {
 	type hdrs = map[string]string
 	tests := []struct {
-		pos, end int64
-		headers  hdrs
-		body     []string
+		pos, end  int64
+		bodyStart int
+		headers   hdrs
+		body      []string
 	}{
 		// The file offsets and probe strings were computed by hand.
 		// If you edit the test.mbox, you will to update these test cases.
 		// There must be exactly as many entries in this slice as messages.
-		{0, 5011, hdrs{
+		{0, 5011, 1590, hdrs{
 			"subject": "Subversion 1.6.13 Released",
 			"sender":  "hyrum@hyrumwright.org",
 			"list-id": "<announce.apache.org>",
 		}, []string{
 			"subversion-1.6.13.tar.bz2", "5329 FCFD 6305 9821 F7B2",
 		}},
-		{5011, 7539, hdrs{
+		{5011, 7539, 1670, hdrs{
 			"precedence": "bulk",
 			"reply-to":   "jplevyak@apache.org",
 		}, []string{
 			"http://trafficserver.apache.org/downloads.html",
 		}},
-		{7539, 10737, hdrs{
+		{7539, 10737, 1382, hdrs{
 			"x-spam-check-by": "apache.org",
 			"to":              "announce@apache.org",
 			"from":            "Niklas Gustavsson <ngn@apache.org>",
@@ -50,14 +52,14 @@ func TestScan(t *testing.T) {
 			"[FTPSERVER-356] - Incorrect pom.xml on trunk",
 			"The Apache MINA project\n\n", // at the end of the message
 		}},
-		{10737, 16212, hdrs{"date": "Mon, 4 Oct 2010 10:41:18 -0400"}, []string{
+		{10737, 16212, 2478, hdrs{"date": "Mon, 4 Oct 2010 10:41:18 -0400"}, []string{
 			"\n   (See CHANGES-APR-UTIL-1.3 for more information.)", // N.B. indented
 		}},
-		{16212, 22712, hdrs{"from": "Sally Khudairi <sk@apache.org>"}, []string{
+		{16212, 22712, 2522, hdrs{"from": "Sally Khudairi <sk@apache.org>"}, []string{
 			"Thought Leaders Dana Blankenho=\nrn of ZDNet",       // quoted-printable EOL
 			"@TheASF feed on Twitter.=0A=0A# # #=0A=0A=0A      ", // spaces at EOL
 		}},
-		{22712, 28706, hdrs{"subject": "[ANN] Apache Maven 3.0 Released"}, []string{
+		{22712, 28706, 1595, hdrs{"subject": "[ANN] Apache Maven 3.0 Released"}, []string{
 			"     * [MNG-4836] - Incorrect recursive expression cycle errors (update \nplexus-interpolation)",
 		}},
 	}
@@ -77,6 +79,14 @@ func TestScan(t *testing.T) {
 			t.Errorf("index %d: got offsets %d..%d, want %d..%d", i, m.Pos, m.End, tc.pos, tc.end)
 		}
 
+		// Check the body offset, and verify it gives us the same reference we
+		// get from the slice into m.Data.
+		if got := m.BodyOffset(); got != tc.bodyStart {
+			t.Errorf("index %d: got body offset %d, want %d", i, got, tc.bodyStart)
+		} else if diff := cmp.Diff(m.Body(), m.Data[got:]); diff != "" {
+			t.Errorf("index %d: body offset vs data (-got, +want):\n%s", i, diff)
+		}
+
 		// Check for certain interesting headers.
 		for key, want := range tc.headers {
 			if got := m.ParsedHeader.Get(key); got != want {
@@ -90,6 +100,11 @@ func TestScan(t *testing.T) {
 			if !strings.Contains(body, want) {
 				t.Errorf("index %d: missing body string %q", i, want)
 			}
+		}
+
+		// Verify that the From_ line got populated.
+		if !bytes.Contains(m.FromLine(), []byte(" MAILER-DAEMON ")) {
+			t.Errorf("index %d: missing From_ line marker in %q", i, m.FromLine())
 		}
 		i++
 	}

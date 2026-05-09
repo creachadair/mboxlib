@@ -138,6 +138,9 @@ func (m *Message) Header() []byte { return m.rawHeader }
 // Body returns a slice into m.Data containing the unparsed message body.
 func (m *Message) Body() []byte { return m.rawBody }
 
+// BodyOffset reports the offset into m.Data where the message body begins.
+func (m *Message) BodyOffset() int { return len(m.Data) - len(m.rawBody) }
+
 // FromLine returns a slice into m.Data containing the unparsed From_ line.
 // Leading and trailing whitespace is trimmed from the result.
 func (m *Message) FromLine() []byte { return bytes.TrimSpace(m.fromLine) }
