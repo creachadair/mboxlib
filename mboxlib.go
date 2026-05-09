@@ -147,6 +147,7 @@ func (m *Message) Body() []byte { return m.rawBody }
 func (m *Message) BodyOffset() int { return len(m.Data) - len(m.rawBody) }
 
 // FromLine returns a slice into m.Data containing the unparsed From_ line.
+// The result may be nil if there was no From_ line.
 // Leading and trailing whitespace is trimmed from the result.
 func (m *Message) FromLine() []byte { return bytes.TrimSpace(m.fromLine) }
 
