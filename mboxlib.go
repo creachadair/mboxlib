@@ -73,7 +73,7 @@ func (s *Scanner) Next() ([]byte, error) {
 
 		s.cur = s.buf.Next(i + 1) // +1 for the newline
 		s.end += int64(len(s.cur))
-		s.last = s.first + countLines(s.cur)
+		s.last = s.first + countLines(s.cur) - 1 // -1 so we don't double-count first
 		return s.cur, nil
 	}
 
@@ -84,7 +84,7 @@ func (s *Scanner) Next() ([]byte, error) {
 	}
 	s.cur = s.buf.Next(n)
 	s.end += int64(len(s.cur))
-	s.last = s.first + countLines(s.cur)
+	s.last = s.first + countLines(s.cur) - 1 // -1 so we don't double-count first
 	return s.cur, nil
 }
 
@@ -180,13 +180,16 @@ func cutAfter(s, sep []byte) (first, rest []byte) {
 	return s[:end], s[end:]
 }
 
-// countLines reports the number of lines in data, where line is a span of text
-// ending with a newline. If atEOF is true, a trailing newline is not counted.
+// countLines reports the number of lines in data, where line is a maximal
+// contiguous span of zero or more bytes not containing a newline, and ending
+// with a newline or the end of the input.
 func countLines(data []byte) int {
+	if len(data) == 0 {
+		return 1
+	}
 	n := bytes.Count(data, []byte("\n"))
-	// Do not count the trailing newline of the segment as an additional line.
-	if len(data) != 0 && data[len(data)-1] == '\n' {
-		return n - 1 // do not count the trailing
+	if len(data) != 0 && data[len(data)-1] != '\n' {
+		n++
 	}
 	return n
 }
