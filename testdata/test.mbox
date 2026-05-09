@@ -1,0 +1,607 @@
+From MAILER-DAEMON Fri Oct  1 17:52:05 2010
+Return-Path: 
+ <announce-return-940-apmail-announce-archive=apache.org@apache.org>
+Delivered-To: apmail-announce-archive@www.apache.org
+Received: (qmail 53873 invoked from network); 1 Oct 2010 17:52:05 -0000
+Received: from unknown (HELO mail.apache.org) (140.211.11.3)
+  by 140.211.11.9 with SMTP; 1 Oct 2010 17:52:05 -0000
+Received: (qmail 60203 invoked by uid 500); 1 Oct 2010 17:51:49 -0000
+Delivered-To: apmail-announce-archive@apache.org
+Received: (qmail 59677 invoked by uid 500); 1 Oct 2010 17:51:48 -0000
+Mailing-List: contact announce-help@apache.org; run by ezmlm
+Precedence: bulk
+List-Help: <mailto:announce-help@apache.org>
+List-Unsubscribe: <mailto:announce-unsubscribe@apache.org>
+List-Post: <mailto:announce@apache.org>
+List-Id: <announce.apache.org>
+Delivered-To: mailing list announce@apache.org
+Delivered-To: moderator for announce@apache.org
+Received: (qmail 6503 invoked by uid 99); 1 Oct 2010 17:08:20 -0000
+X-ASF-Spam-Status: No, hits=0.7 required=10.0
+	tests=RCVD_IN_DNSWL_NONE,SPF_NEUTRAL
+X-Spam-Check-By: apache.org
+Received-SPF: neutral (nike.apache.org: local policy)
+MIME-Version: 1.0
+Sender: hyrum@hyrumwright.org
+X-Originating-IP: [24.155.242.160]
+Date: Fri, 1 Oct 2010 12:07:52 -0500
+X-Google-Sender-Auth: EFRvXxbxJfOeJv7m4aAjTn3CqSA
+Message-ID: <AANLkTi=-=8fqF+RgGv6LtskpMrLPCxjNMmDcK5ibTeRo@mail.gmail.com>
+Subject: Subversion 1.6.13 Released
+From: Hyrum Wright <hwright@apache.org>
+To: announce <announce@apache.org>
+Content-Type: text/plain; charset=ISO-8859-1
+X-Virus-Checked: Checked by ClamAV on apache.org
+
+I'm happy to announce Subversion 1.6.13, available from:
+
+    http://subversion.tigris.org/downloads/subversion-1.6.13.tar.bz2
+    http://subversion.tigris.org/downloads/subversion-1.6.13.tar.gz
+    http://subversion.tigris.org/downloads/subversion-1.6.13.zip
+    http://subversion.tigris.org/downloads/subversion-deps-1.6.13.tar.bz2
+    http://subversion.tigris.org/downloads/subversion-deps-1.6.13.tar.gz
+    http://subversion.tigris.org/downloads/subversion-deps-1.6.13.zip
+
+This is a bugfix release, part of the 1.6.x release series.  Of note, this
+release includes a fix which addresses CVE-2010-3315, a security issue when
+using 'SVNPathAuthz short_circuit'.  More information can be found here:
+http://subversion.apache.org/security/CVE-2010-3315-advisory.txt
+
+The MD5 checksums are:
+
+    7ae1c827689f21cf975804005be30aeb  subversion-1.6.13.tar.bz2
+    8451f5d771edc0a0302bd9a52d54e150  subversion-1.6.13.tar.gz
+    dd4009b239a5354b434e5f66cddde145  subversion-1.6.13.zip
+    2a7d662bac872c61a5e11c89263d7f07  subversion-deps-1.6.13.tar.bz2
+    688bdb107731f9db2f3b6297b663a68d  subversion-deps-1.6.13.tar.gz
+    bb960d37f835e5e556e23e4eb85a9b08  subversion-deps-1.6.13.zip
+
+The SHA1 checksums are:
+
+    185efd129c3c4b04f1544d62bb9a3fcd0f58ba29  subversion-1.6.13.tar.bz2
+    06d3afc49182c80ea712c13409c008d27a4e889b  subversion-1.6.13.tar.gz
+    6530528fae0335cd8495ebf1f2072e2dd9df2e31  subversion-1.6.13.zip
+    e51bffda416a3a9abe068aab6f90d174dedef352  subversion-deps-1.6.13.tar.bz2
+    1faa5ba0c87210f534ed445d061e4955396524d4  subversion-deps-1.6.13.tar.gz
+    945ef9f68998aedf320af50d220e47a470684a06  subversion-deps-1.6.13.zip
+
+PGP Signatures are available at:
+
+    http://subversion.tigris.org/downloads/subversion-1.6.13.tar.bz2.asc
+    http://subversion.tigris.org/downloads/subversion-1.6.13.tar.gz.asc
+    http://subversion.tigris.org/downloads/subversion-1.6.13.zip.asc
+    http://subversion.tigris.org/downloads/subversion-deps-1.6.13.tar.bz2.asc
+    http://subversion.tigris.org/downloads/subversion-deps-1.6.13.tar.gz.asc
+    http://subversion.tigris.org/downloads/subversion-deps-1.6.13.zip.asc
+
+For this release, the following people have provided PGP signatures:
+
+   Senthil Kumaran S [1024D/6CCD4038] with fingerprint:
+    8035 16A5 1D6E 50E2 1ECD  DE56 F68D 46FB 6CCD 4038
+   Philip Martin [2048R/ED1A599C] with fingerprint:
+    A844 790F B574 3606 EE95  9207 76D7 88E1 ED1A 599C
+   Paul T. Burba [1024D/53FCDC55] with fingerprint:
+    E630 CF54 792C F913 B13C  32C5 D916 8930 53FC DC55
+   Julian Foad [1024D/353E25BC] with fingerprint:
+    6604 5A4B 43BC F994 7777  5728 351F 33E4 353E 25BC
+   Bert Huijben [1024D/9821F7B2] with fingerprint:
+    2017 F51A 2572 0E78 8827  5329 FCFD 6305 9821 F7B2
+   Hyrum K. Wright [1024D/4E24517C] with fingerprint:
+    3324 80DA 0F8C A37D AEE6  D084 0B03 AE6E 4E24 517C
+   Stefan Sperling [1024D/F59D25F0] with fingerprint:
+    B1CF 1060 A1E9 34D1 9E86  D6D6 E5D3 0273 F59D 25F0
+   Mark Phippard [1024D/035A96A9] with fingerprint:
+    D315 89DB E1C1 E9BA D218  39FD 265D F8A0 035A 96A9
+
+Release notes for the 1.6.x release series may be found at:
+
+    http://subversion.apache.org/docs/release-notes/1.6.html
+
+You can find the list of changes between 1.6.13 and earlier versions at:
+
+    http://svn.apache.org/repos/asf/subversion/tags/1.6.13/CHANGES
+
+Questions, comments, and bug reports to users@subversion.apache.org.
+
+Thanks,
+- The Subversion Team
+
+From MAILER-DAEMON Sat Oct  2 17:27:12 2010
+Return-Path: 
+ <announce-return-941-apmail-announce-archive=apache.org@apache.org>
+Delivered-To: apmail-announce-archive@www.apache.org
+Received: (qmail 66045 invoked from network); 2 Oct 2010 17:27:12 -0000
+Received: from unknown (HELO mail.apache.org) (140.211.11.3)
+  by 140.211.11.9 with SMTP; 2 Oct 2010 17:27:12 -0000
+Received: (qmail 52459 invoked by uid 500); 2 Oct 2010 17:26:58 -0000
+Delivered-To: apmail-announce-archive@apache.org
+Received: (qmail 51851 invoked by uid 500); 2 Oct 2010 17:26:57 -0000
+Mailing-List: contact announce-help@apache.org; run by ezmlm
+Precedence: bulk
+List-Help: <mailto:announce-help@apache.org>
+List-Unsubscribe: <mailto:announce-unsubscribe@apache.org>
+List-Post: <mailto:announce@apache.org>
+List-Id: <announce.apache.org>
+Delivered-To: mailing list announce@apache.org
+Delivered-To: moderator for announce@apache.org
+Received: (qmail 12758 invoked by uid 99); 2 Oct 2010 16:27:59 -0000
+X-ASF-Spam-Status: No, hits=2.5 required=10.0
+	tests=TO_NO_BRKTS_DIRECT
+X-Spam-Check-By: apache.org
+Message-ID: <4CA75DA7.3070005@apache.org>
+Date: Sat, 02 Oct 2010 09:28:23 -0700
+From: John Plevyak <jplevyak@apache.org>
+Reply-To: jplevyak@apache.org
+Organization: Apache Software Foundation
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US;
+ rv:1.9.2.9) Gecko/20100915 Thunderbird/3.1.4
+MIME-Version: 1.0
+To: announce@apache.org, users@trafficserver.apache.org,
+ dev@trafficserver.apache.org
+Subject: [ANNOUNCE] Apache Traffic Server 2.1.3-unstable released
+Content-Type: text/plain; charset=ISO-8859-1
+Content-Transfer-Encoding: 7bit
+X-Virus-Checked: Checked by ClamAV on apache.org
+
+          Apache Traffic Server v2.1.3-unstable Released
+
+The Apache Software Foundation and the Apache Traffic Server project
+are pleased to announce the release of Apache Traffic Server v2.1.3.
+This is a developer release, i.e. it is not intended for production
+use. However, we encourage Traffic Server users to download and try
+our developer releases, and file bugs (and/or send patches), to help
+prepare our next stable release. In particular, users of the
+v2.1.2 release are strongly encouraged to upgrade to this version.
+
+This release was accelerated to address a cache corruption bug in v2.1.2
+but includes a number of bug fixes and performance improvements.  It is
+available for download at
+
+     http://trafficserver.apache.org/downloads.html
+
+
+More details about this release is available on our download page.
+
+The Apache Traffic Server Team
+
+
+
+From MAILER-DAEMON Sun Oct  3 22:59:09 2010
+Return-Path: 
+ <announce-return-942-apmail-announce-archive=apache.org@apache.org>
+Delivered-To: apmail-announce-archive@www.apache.org
+Received: (qmail 34184 invoked from network); 3 Oct 2010 22:59:09 -0000
+Received: from unknown (HELO mail.apache.org) (140.211.11.3)
+  by 140.211.11.9 with SMTP; 3 Oct 2010 22:59:09 -0000
+Received: (qmail 62852 invoked by uid 500); 3 Oct 2010 22:58:55 -0000
+Delivered-To: apmail-announce-archive@apache.org
+Received: (qmail 62406 invoked by uid 500); 3 Oct 2010 22:58:53 -0000
+Mailing-List: contact announce-help@apache.org; run by ezmlm
+Precedence: bulk
+List-Help: <mailto:announce-help@apache.org>
+List-Unsubscribe: <mailto:announce-unsubscribe@apache.org>
+List-Post: <mailto:announce@apache.org>
+List-Id: <announce.apache.org>
+Delivered-To: mailing list announce@apache.org
+Delivered-To: moderator for announce@apache.org
+Received: (qmail 54234 invoked by uid 99); 3 Oct 2010 20:03:19 -0000
+X-ASF-Spam-Status: No, hits=-2000.0 required=10.0
+	tests=ALL_TRUSTED,T_RP_MATCHES_RCVD
+X-Spam-Check-By: apache.org
+MIME-Version: 1.0
+Date: Sun, 3 Oct 2010 22:02:57 +0200
+Message-ID: <AANLkTi=_OQm5b0Yf+fwyzSogyhqmXZwp1Myf1jSCtjYu@mail.gmail.com>
+Subject: [ANNOUNCE] Apache FtpServer 1.0.5 released
+From: Niklas Gustavsson <ngn@apache.org>
+To: announce@apache.org
+Content-Type: text/plain; charset=ISO-8859-1
+
+The Apache MINA project is pleased to announce the release of FtpServer 1.0.5.
+
+This release fixes the issues found since the release of 1.0.4. We consider
+this a stable and production ready release.
+
+We welcome you to try it out. We have tried to make it simple both to
+embed within your application as well as running it standalone.
+
+The latest release is now available here:
+http://mina.apache.org/ftpserver/downloads.html
+
+The change log for this release is:
+Bug
+[FTPSERVER-356] - Incorrect pom.xml on trunk
+[FTPSERVER-363] - Incorrect Javadoc for
+ConnectionConfigFactory.get/setMaxAnonymousLogins
+[FTPSERVER-368] - parent pom.xml and core/pom.xml reference to
+${groupId} should be ${project.groupId} in the ftplet -api dependency
+[FTPSERVER-369] - maxLogin is reached immediately
+[FTPSERVER-373] - Examples pom.xml can't be parsed by Eclipse M2:
+problem with XML
+[FTPSERVER-379] - DbUserManager doesn't close test connection in ctor
+[FTPSERVER-382] - Invalid POM for ftpserver-parent causes compilation
+failures with Maven 3 when using ftplet transitive dependencies
+[FTPSERVER-383] - STAT command does not work as LIST
+[FTPSERVER-385] - NioListener.resume() does not correctly reset the
+suspend state
+[FTPSERVER-387] - Disabling a user appears to have no effect
+[FTPSERVER-388] - org.apache.ftpserver:ftpserver-parent:1.0.4 pom is invalid
+
+Improvement
+[FTPSERVER-354] - Include tar.bz2 distribution
+[FTPSERVER-386] - Add check so that NioListener.start() can not be
+called on a started listener
+
+New Feature
+[FTPSERVER-362] - Add a configuration option for maximum number of
+threads the server is allowed to create
+
+The full release notes can found here:
+https://issues.apache.org/jira/browse/FTPSERVER/fixforversion/12314821
+
+Thanks for the feedback that made this release possible!
+
+The Apache MINA project
+
+From MAILER-DAEMON Mon Oct  4 15:27:43 2010
+Return-Path: 
+ <announce-return-943-apmail-announce-archive=apache.org@apache.org>
+Delivered-To: apmail-announce-archive@www.apache.org
+Received: (qmail 73773 invoked from network); 4 Oct 2010 15:27:43 -0000
+Received: from unknown (HELO mail.apache.org) (140.211.11.3)
+  by 140.211.11.9 with SMTP; 4 Oct 2010 15:27:43 -0000
+Received: (qmail 8815 invoked by uid 500); 4 Oct 2010 15:27:27 -0000
+Delivered-To: apmail-announce-archive@apache.org
+Received: (qmail 8068 invoked by uid 500); 4 Oct 2010 15:27:23 -0000
+Mailing-List: contact announce-help@apache.org; run by ezmlm
+Precedence: bulk
+List-Help: <mailto:announce-help@apache.org>
+List-Unsubscribe: <mailto:announce-unsubscribe@apache.org>
+List-Post: <mailto:announce@apache.org>
+List-Id: <announce.apache.org>
+Delivered-To: mailing list announce@apache.org
+Delivered-To: moderator for announce@apache.org
+Received: (qmail 9923 invoked by uid 99); 4 Oct 2010 14:41:46 -0000
+X-ASF-Spam-Status: No, hits=0.0 required=10.0
+	tests=FREEMAIL_FROM,RCVD_IN_DNSWL_NONE,SPF_PASS,T_TO_NO_BRKTS_FREEMAIL
+X-Spam-Check-By: apache.org
+Received-SPF: pass (athena.apache.org: domain of trawick@gmail.com designates
+ 209.85.215.50 as permitted sender)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:mime-version:received:sender:received:date
+         :x-google-sender-auth:message-id:subject:from:to:content-type;
+        bh=i704rFpjzumQasmxaCY9wsKJmgSfdC36FtAAhEv9PnI=;
+        b=lf7Xypj7/FQGIq2OG7v5MRYEo0JYVr62jMdYYZ7YSoLUPvdEgw1XyiwIi8TAbH8h6U
+         WfVzIjwq5ByTBK3GeqTWuPuoUiK9Lomhi2iBmDKrf4RPq4zp2GRQEYbwISOIexIckRSd
+         HC5hHMKnIkdpAvh+PmMLOT205T6TXlwbnNgnc=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=mime-version:sender:date:x-google-sender-auth:message-id:subject
+         :from:to:content-type;
+        b=HCXwrqnJ/mCClJjde0F3SUc9tpgwvusljfo0udjg/bMGsg/NnmQom2OZluTWJL+XPg
+         FoUg916f5FoPPHBaayMGo7RdWZGhghHU+nKClJoYkapfj7wVrSYchzNf97kKWS7kMwfX
+         U+b0Aygk26T3qFtWIBJXLYrMNn6jPUDe+2eug=
+MIME-Version: 1.0
+Sender: trawick@gmail.com
+Date: Mon, 4 Oct 2010 10:41:18 -0400
+X-Google-Sender-Auth: p0A-HWQRnJF-ioNodk9WGnO_o6Y
+Message-ID: <AANLkTinnJ0oZCN78Y71dh8J63SRdi+FcNkX5heFA3y4B@mail.gmail.com>
+Subject: Apache Portable Runtime Utility 1.3.10 is released
+From: Jeff Trawick <trawick@apache.org>
+To: announce@apache.org
+Content-Type: text/plain; charset=ISO-8859-1
+
+   Apache Portable Runtime Utility 1.3.10 Released
+
+   The Apache Software Foundation and the Apache Portable Runtime
+   Project are proud to announce the General Availability of
+   version 1.3.10 of the APR Apache Portable Runtime Utility library.
+   This is a bug fix release and corrects several potential security
+   vulnerabilities and other defects.  Users of previous versions
+   are strongly cautioned to update to this release.
+
+   (See CHANGES-APR-UTIL-1.3 for more information.)
+
+   Version 1.4.2 of the Apache Portable Runtime remains current.
+
+   Version 1.2.1 of the companion APR-iconv library, an alternative
+   portable implementation of the 'iconv' library, remains current.
+
+   APR is available for download from:
+
+     http://apr.apache.org/download.cgi
+
+   The mission of the Apache Portable Runtime Project is to create
+   and maintain software libraries that provide a predictable and
+   consistent interface to underlying platform-specific
+   implementations. The primary goal is to provide an API to
+   which software developers may code and be assured of predictable
+   if not identical behavior regardless of the platform on which
+   their software is built, relieving them of the need to code
+   special-case conditions to work around or take advantage of
+   platform-specific deficiencies or features.
+
+   APR and its companion libraries are implemented entirely in C
+   and provide a common programming interface across a wide variety
+   of operating system platforms without sacrificing performance.
+   Currently supported platforms include:
+
+     UNIX variants
+     Windows
+     Netware
+     Mac OS X
+     OS/2
+
+   To give a brief overview, the primary core
+   subsystems of APR 1.3 include the following:
+
+     Atomic operations
+     Dynamic Shared Object loading
+     File I/O
+     Locks (mutexes, condition variables, etc)
+     Memory management (high performance allocators)
+     Memory-mapped files
+     Multicast Sockets
+     Network I/O
+     Shared memory
+     Thread and Process management
+     Various data structures (tables, hashes, priority queues, etc)
+
+   For a more complete list, please refer to the following URLs:
+
+     http://apr.apache.org/docs/apr/modules.html
+     http://apr.apache.org/docs/apr-util/modules.html
+
+   Users of APR 0.9 should be aware that migrating to the APR 1.x
+   programming interfaces may require some adjustments; APR 1.x is
+   neither source nor binary compatible with earlier APR 0.9 releases.
+   Users of APR 1.x can expect consistent interfaces and binary backwards
+   compatibility throughout the entire APR 1.x release cycle, as defined
+   in our versioning rules:
+
+     http://apr.apache.org/versioning.html
+
+   APR is already used extensively by the Apache HTTP Server
+   version 2 and the Subversion revision control system, to
+   name but a few.  We list all known projects using APR at
+   http://apr.apache.org/projects.html -- so please let us know
+   if you find our libraries useful in your own projects!
+
+From MAILER-DAEMON Wed Oct  6 13:22:18 2010
+Return-Path: 
+ <announce-return-944-apmail-announce-archive=apache.org@apache.org>
+Delivered-To: apmail-announce-archive@www.apache.org
+Received: (qmail 42272 invoked from network); 6 Oct 2010 13:22:18 -0000
+Received: from unknown (HELO mail.apache.org) (140.211.11.3)
+  by 140.211.11.9 with SMTP; 6 Oct 2010 13:22:18 -0000
+Received: (qmail 38498 invoked by uid 500); 6 Oct 2010 13:22:01 -0000
+Delivered-To: apmail-announce-archive@apache.org
+Received: (qmail 37855 invoked by uid 500); 6 Oct 2010 13:21:58 -0000
+Mailing-List: contact announce-help@apache.org; run by ezmlm
+Precedence: bulk
+List-Help: <mailto:announce-help@apache.org>
+List-Unsubscribe: <mailto:announce-unsubscribe@apache.org>
+List-Post: <mailto:announce@apache.org>
+List-Id: <announce.apache.org>
+Delivered-To: mailing list announce@apache.org
+Delivered-To: moderator for announce@apache.org
+Received: (qmail 20276 invoked by uid 99); 6 Oct 2010 13:11:10 -0000
+X-ASF-Spam-Status: No, hits=0.7 required=10.0
+	tests=RCVD_IN_DNSWL_NONE,SPF_NEUTRAL
+X-Spam-Check-By: apache.org
+Received-SPF: neutral (nike.apache.org: local policy)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yahoo.com; s=s1024;
+ t=1286370641; bh=gLbqxal60x7F/RRSfdZ0YsOb5WqdbjWOOCuSjcWXbCA=;
+ h=Message-ID:X-YMail-OSG:Received:X-RocketYMMF:X-Mailer:Date:From:Reply-To:Subject:To:MIME-Version:Content-Type:Content-Transfer-Encoding;
+ b=6udsgeN/y4mb93strd57uEtpCKTceA8faJZTOYC7CAo4VppIPQVaLNk4KYOCjtL6QmrndIgbsa6kggc++1leb3uclIYNV4EoZHFFv0V2TZ8hrgpzgEKzXSx8/vU0G5kyH5GoKwVGG+mxIXfE5PQ1w6KhQAbi+cOx5hqAEJQOfEM=
+Message-ID: <492805.863.qm@web30807.mail.mud.yahoo.com>
+X-YMail-OSG: cquxykEVM1nvPpecFtlgjWIQEnu9c1No.IOX4Vw9P5qOPc0
+ D2xD4a1y_dIIKqxnkFeLx.tFUC8nIg.JGFf2opRTFE8gFzhyAYBtvLT4id0V
+ 1pUevaZHARGfTmxdjAmRFFKIFIkigsudwnG37gX8131WhUXPVZFg7gUoL3N3
+ ybDFdn5YjdoiIXLpml3ChupsPxLzTvYPE17bMIA2l6CG2dNKXg7X5gPfLUYF
+ ka6yNXAB7Tu61FBEsFzBzjjDFJy9YokImpV1SCP93B8CFTFeLyRKabBX4eOm
+ 2nQ9_.QmAKWXC8Bd7MC.VRG.GY57NStifIl5VLQCTpAodn1CykvB6gfOsIpk
+ dJkLkrANRCo3O7KubZ7u60eS05Uac
+X-RocketYMMF: sallykhudairi
+X-Mailer: YahooMailClassic/11.4.9 YahooMailWebService/0.8.106.282862
+Date: Wed, 6 Oct 2010 06:10:41 -0700 (PDT)
+From: Sally Khudairi <sk@apache.org>
+Reply-To: sk@apache.org
+Subject: Announcing ApacheCon Keynote Presentations/Early Registration ends
+ Fri 8 October
+To: announce@apache.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Virus-Checked: Checked by ClamAV on apache.org
+
+ApacheCon Announces Keynote Presentations by Thought Leaders Dana Blankenho=
+rn of ZDNet, Daniel Crichton of NASA Jet Propulsion Laboratory, and Bob Sut=
+or of IBM Corporation=0A=0A=0AFOREST HILL, MD =E2=80=94 6 October, 2010 =E2=
+=80=94 ApacheCon, the official conference, trainings, expo, hackathon, barc=
+amp and meetups of The Apache Software Foundation (ASF), today announced th=
+e keynote presenters and sponsors for ApacheCon North America. This year's =
+event takes place 1-5 November 2010 at the Westin Peachtree in Atlanta, Geo=
+rgia, with numerous early registration incentives available through Friday,=
+ 8 October 2010.=0A=0AThe conference theme, "Servers, The Cloud, and Innova=
+tion", showcases an array of ASF-developed Open Source projects, community =
+practices, and business solutions. Keynote addresses will be presented by:=
+=0A=0A- Dana Blankenhorn, Linux and Open Source Writer, ZDNet =E2=80=93 Wed=
+nesday, 3 November, 9AM=0A- Daniel Crichton, Program Manager and Principal =
+Computer Scientist, NASA Jet Propulsion Laboratory =E2=80=93 Thursday, 4 No=
+vember 11.30AM=0A- Dr. Bob Sutor, Vice President of Open Systems and Linux,=
+ IBM Corporation - Friday, 4 November 12.30PM=0A=0A=0AApache developers, us=
+ers, enthusiasts, software architects, administrators, executives, and comm=
+unity managers will learn to successfully develop, deploy, and leverage exi=
+sting and emerging Open Source technologies critical to their businesses. H=
+ands-on trainings and general conference sessions will cover in-depth dozen=
+s of Apache products such as Cassandra, Geronimo, Hadoop, Lucene, Tomcat, a=
+nd the Apache HTTP Server.=0A=0ASpecial events during the week include BarC=
+ampApache, Hackathon, MeetUps, expo hall, receptions, and ample networking =
+opportunities with peers and new connections. Both BarCampApache and ASF Pr=
+oject MeetUps are open to the public free of charge.=0A=0AApacheCon Gold sp=
+onsor HotWax Media and Silver sponsor Hewlett-Packard are joined by exhibit=
+ors and sponsors that include: CollabNet, Day Software, Facebook, Hippo, IB=
+M, Lucid Imagination, Ning, Progress Fuse, Rackspace, SpringSource, The Apa=
+che Software Foundation, WSO2, and Yahoo!. For sponsor, exhibitor, and comm=
+unity partnership opportunities, contact Delia Frees at delia@apachecon.com=
+.=0A=0AMedia registration is available for members of the press with valid =
+credentials. Contact Sally Khudairi at sk@apache.org for more information.=
+=0A=0AEarly-bird registration incentives include savings of up to $150 with=
+ the Hotel+Registration package, 20% off Full-Conference+Trainings Immersio=
+n, and group registration rates. For the complete list of sessions and to r=
+egister, visit http://apachecon.com/ and follow the @ApacheCon feed on Twit=
+ter.=0A=0A=0AAbout The Apache Software Foundation (ASF)=0AEstablished in 19=
+99, the all-volunteer ASF oversees nearly one hundred fifty leading Open So=
+urce projects, including Apache HTTP Server =E2=80=94 the world's most popu=
+lar Web server software, powering more than 130 Million Websites worldwide.=
+ Today, more than 300 individual Members and 2,300 Committers successfully =
+collaborate to develop freely available enterprise-grade software, benefiti=
+ng millions of users worldwide through thousands of software solutions dist=
+ributed under the Apache License. The community actively participates in AS=
+F mailing lists, mentoring initiatives, and ApacheCon, the Foundation's off=
+icial user conference, trainings, and expo. The ASF is funded by individual=
+ donations and corporate sponsors that include AMD, Basis Technology, Faceb=
+ook, Google, HP, Microsoft, Progress Software, VMware, and Yahoo!. Addition=
+al sponsors include Matt Mullenweg, AirPlus International, BlueNog, Intuit,=
+ Joost, and Two Sigma Investments. More information is
+ available at http://www.apache.org/, the announce@apache.org mailing list,=
+ the ASF Blog, and the @TheASF feed on Twitter.=0A=0A# # #=0A=0A=0A      
+
+From MAILER-DAEMON Fri Oct  8 16:48:36 2010
+Return-Path: 
+ <announce-return-945-apmail-announce-archive=apache.org@apache.org>
+Delivered-To: apmail-announce-archive@www.apache.org
+Received: (qmail 22167 invoked from network); 8 Oct 2010 16:48:36 -0000
+Received: from unknown (HELO mail.apache.org) (140.211.11.3)
+  by 140.211.11.9 with SMTP; 8 Oct 2010 16:48:36 -0000
+Received: (qmail 72337 invoked by uid 500); 8 Oct 2010 16:48:21 -0000
+Delivered-To: apmail-announce-archive@apache.org
+Received: (qmail 71980 invoked by uid 500); 8 Oct 2010 16:48:20 -0000
+Mailing-List: contact announce-help@apache.org; run by ezmlm
+Precedence: bulk
+List-Help: <mailto:announce-help@apache.org>
+List-Unsubscribe: <mailto:announce-unsubscribe@apache.org>
+List-Post: <mailto:announce@apache.org>
+List-Id: <announce.apache.org>
+Delivered-To: mailing list announce@apache.org
+Delivered-To: moderator for announce@apache.org
+Received: (qmail 68931 invoked by uid 99); 8 Oct 2010 16:46:02 -0000
+X-ASF-Spam-Status: No, hits=-1.6 required=10.0
+	tests=RCVD_IN_DNSWL_MED,SPF_NEUTRAL
+X-Spam-Check-By: apache.org
+Received-SPF: neutral (nike.apache.org: local policy)
+Message-ID: <4CAF4AAD.4000309@apache.org>
+Date: Fri, 08 Oct 2010 18:45:33 +0200
+From: Benjamin Bentmann <bentmann@apache.org>
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; de;
+ rv:1.9.2.9) Gecko/20100915 Thunderbird/3.1.4
+MIME-Version: 1.0
+To: announce@apache.org
+Subject: [ANN] Apache Maven 3.0 Released
+Content-Type: text/plain; charset=ISO-8859-15; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Virus-Checked: Checked by ClamAV on apache.org
+
+The Maven team is pleased to announce the release of Apache Maven 3.0.
+
+Maven is a project comprehension and build tool, designed to simplify 
+the process of maintaining a healthy development lifecycle for your 
+project. You can read more here:
+
+   http://maven.apache.org/
+
+Downloads of source and binary distributions are listed in our download 
+section:
+
+   http://maven.apache.org/download.html
+
+A major goal of Maven 3.0 is to be compatible, to the extent possible, 
+with existing plugins and projects designed for Maven 2.x. Users 
+interested in upgrading to this new major release should have a glance 
+at the compatibility notes for known differences between Maven 3.0 and 
+Maven 2.x:
+
+   http://cwiki.apache.org/MAVEN/maven-3x-compatibility-notes.html
+
+If you encounter unexpected problems while using Maven 3.0, please feel 
+free to contact us via the Maven developer list:
+
+   http://maven.apache.org/mail-lists.html
+
+Last but not least, the Maven team would like to thank all the users 
+that tested the various alphas/betas/RCs and provided valuable feedback 
+that helped us to eventually release a solid Maven 3.0!
+
+Release Notes - Maven 2 & 3 - Version 3.0 (since 3.0-beta-3 only)
+
+** Bug
+     * [MNG-4592] - Snapshot artifacts that could not be downloaded due 
+to communication problems are "blacklisted" for a day by default.
+     * [MNG-4751] - Snapshot version not resolved for version range
+     * [MNG-4785] - NPE in dependency resolution code for TC plugin
+     * [MNG-4786] - [regression] Ant-based mojo using 
+maven-script-ant:2.1.0+ cause NPE
+     * [MNG-4788] - [regression] Appassembler Maven Plugin doesn't work 
+like as it should
+     * [MNG-4789] - [regression] Difference in compile scope dependency 
+resolution
+     * [MNG-4791] - [regression] POM artifacts passed into 
+MavenProjectBuilder.buildFromRepository() are no longer resolved
+     * [MNG-4793] - Unable to obtain archiver for extension 'zip'
+     * [MNG-4794] - 
+'org.apache.maven.plugins:maven-install-plugin:2.3.1'. A required class 
+is missing: org.codehaus.plexus.digest.Digester
+     * [MNG-4795] - [regression] Dependencies in forked reactor projects 
+are not resolved when aggregator bound to lifecycle forks
+     * [MNG-4800] - Conflict resolution does not pick sub tree of 
+nearest dependency if farther conflicting dependency has wider scope
+     * [MNG-4810] - Maven cannot build if loaded in a classloader that 
+is not backed by a real JAR file / classpath
+     * [MNG-4811] - Custom Maven Plugin regression in Maven 3.x, custom 
+ComponentConfigurator causes infinite loop
+     * [MNG-4814] - Eary dependency resolution attempts for reactor 
+projects prevent their later resolution from the reactor
+     * [MNG-4818] - NPE in legacy.DefaultWagonManager.getArtifact
+     * [MNG-4829] - [regression] Checksum failures aren't logged
+     * [MNG-4832] - Maven 3 Regression: Missing constructor of 
+org.codehaus.plexus.component.configurator.converters.special.ClassRealmConverter
+     * [MNG-4834] - [regression] MavenProject.getParent() ignores 
+configured repositories
+     * [MNG-4836] - Incorrect recursive expression cycle errors (update 
+plexus-interpolation)
+     * [MNG-4837] - Interpolation error due to cyclic expression for one 
+of the POM coordinates gets needlessly repeated
+     * [MNG-4842] - [regression] Repositories discovered in dependency 
+POMs override repositories configured for original resolution request of POM
+     * [MNG-4845] - [regression] MavenProject.getDependencyArtifact() 
+returns artifacts without version for dependency with version range
+
+** Improvement
+     * [MNG-4452] - Metadata for snapshots should include classifier
+     * [MNG-4787] - Allow class realm manager delegates to alter public 
+part of Maven core realm
+     * [MNG-4815] - (3.0-RC1) Maven Java API does not give nice error 
+messages when improperly configured
+     * [MNG-4824] - multiple failures need additional whitespace
+     * [MNG-4825] - Relative path errors could be more explicit
+
+** New Feature
+     * [MNG-4484] - Create a Maven API for component configuration
+
+** Task
+     * [MNG-4805] - Update default plugin versions used for built-in 
+lifecycle mappings
+     * [MNG-4807] - Extend core artifact filter to exclude relocated 
+Guice-based Plexus shim
+
+** Wish
+     * [MNG-4796] - add a warning when profiles.xml is used (Maven 2) or 
+detected (Maven 3)
+
+Enjoy,
+
+
+-The Maven team
+
+
