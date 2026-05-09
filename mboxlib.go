@@ -27,26 +27,13 @@ func Scan(r io.Reader) iter.Seq2[*Message, error] {
 				yield(nil, err)
 				return
 			}
-			fromLine, rest := cutAfter(next, []byte("\n"))
-			cr := &countReader{data: rest}
-			msg, err := mail.ReadMessage(cr)
+			m, err := ParseMessage(next)
 			if err != nil {
 				yield(nil, err)
 				return
 			}
-
-			extra := msg.Body.(*bufio.Reader).Buffered()
-			endFrom := len(fromLine)
-			bodyOffset := (cr.numRead - extra) + endFrom
-			if !yield(&Message{
-				ParsedHeader: msg.Header,
-				Data:         next,
-				Pos:          s.pos,
-				End:          s.end,
-				fromLine:     fromLine,
-				rawHeader:    next[endFrom:bodyOffset],
-				rawBody:      next[bodyOffset:],
-			}, nil) {
+			m.Pos, m.End = s.pos, s.end
+			if !yield(m, nil) {
 				return
 			}
 		}
@@ -116,6 +103,33 @@ type Message struct {
 	fromLine  []byte // a prefix of Data containing the From_ line
 	rawHeader []byte // a slice of Data containing the header
 	rawBody   []byte // a slice of Data containing the body
+}
+
+// ParseMessage parses a [Message] from the specified raw message data.
+// The Pos and End fields of a successful result are set to 0.
+func ParseMessage(data []byte) (*Message, error) {
+	var fromLine, rest []byte = nil, data
+	if bytes.HasPrefix(data, []byte("From ")) {
+		fromLine, rest = cutAfter(data, []byte("\n"))
+	}
+
+	cr := &countReader{data: rest}
+	msg, err := mail.ReadMessage(cr)
+	if err != nil {
+		return nil, err
+	}
+
+	extra := msg.Body.(*bufio.Reader).Buffered()
+	endFrom := len(fromLine)
+	bodyOffset := (cr.numRead - extra) + endFrom
+	return &Message{
+		ParsedHeader: msg.Header,
+		Data:         data,
+
+		fromLine:  fromLine,
+		rawHeader: data[endFrom:bodyOffset],
+		rawBody:   data[bodyOffset:],
+	}, nil
 }
 
 // Header returns a slice into m.Data containing the unparsed message header.
