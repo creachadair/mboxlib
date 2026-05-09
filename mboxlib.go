@@ -32,7 +32,6 @@ func Scan(r io.Reader) iter.Seq2[*Message, error] {
 				yield(nil, err)
 				return
 			}
-			m.Pos, m.End = s.pos, s.end
 			if !yield(m, nil) {
 				return
 			}
@@ -107,16 +106,12 @@ type Message struct {
 	// It includes the From_ line, if one was present.
 	Data []byte
 
-	// The 0-based byte offsets of Data in the original input.
-	Pos, End int64
-
 	fromLine  []byte // a prefix of Data containing the From_ line
 	rawHeader []byte // a slice of Data containing the header
 	rawBody   []byte // a slice of Data containing the body
 }
 
 // ParseMessage parses a [Message] from the specified raw message data.
-// The Pos and End fields of a successful result are set to 0.
 func ParseMessage(data []byte) (*Message, error) {
 	var fromLine, rest []byte = nil, data
 	if bytes.HasPrefix(data, []byte("From ")) {
