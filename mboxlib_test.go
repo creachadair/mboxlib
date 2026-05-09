@@ -72,6 +72,7 @@ func TestScan(t *testing.T) {
 			i++
 			continue
 		}
+		t.Logf("index %d: subject %q (%d bytes)", i, m.ParsedHeader.Get("subject"), len(m.Data))
 		tc := tests[i]
 
 		// Check file offsets.
