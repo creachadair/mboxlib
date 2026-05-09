@@ -1,3 +1,5 @@
+// Copyright (C) Michael J. Fromberger. All Rights Reserved.
+
 // Package mboxlib implements basic iteration and parsing of Unix mailbox
 // (mbox) format files. Presently, only the "classic" format is supported,
 // using "From_" lines to delimit messages.
