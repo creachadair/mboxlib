@@ -42,22 +42,20 @@ func Scan(r io.Reader) iter.Seq2[*Message, error] {
 
 // A Scanner is a structural scanner for a Unix mailbox (mbox) file.
 type Scanner struct {
-	r        io.Reader
-	buf      bytes.Buffer
-	cur      []byte
-	line     int   // first line of cur, 1-based
-	pos, end int64 // file offsets, 0-based
+	r           io.Reader
+	buf         bytes.Buffer
+	cur         []byte
+	first, last int   // first and last lines of cur, 1-based
+	pos, end    int64 // file offsets, 0-based
 }
 
 // NewScanner constructs a [Scanner] that consumes the contents of r in Unix mailbox (mbox) format.
-func NewScanner(r io.Reader) *Scanner {
-	return &Scanner{r: bufio.NewReader(r), line: 1}
-}
+func NewScanner(r io.Reader) *Scanner { return &Scanner{r: bufio.NewReader(r)} }
 
 // Next parses and returns the next available raw message from s, or reports an error.
 // At the end of input, it returns [io.EOF].
 func (s *Scanner) Next() ([]byte, error) {
-	s.line += bytes.Count(s.cur, []byte("\n"))
+	s.first = s.last + 1
 	s.pos = s.end
 	s.cur = nil
 
@@ -75,6 +73,7 @@ func (s *Scanner) Next() ([]byte, error) {
 
 		s.cur = s.buf.Next(i + 1) // +1 for the newline
 		s.end += int64(len(s.cur))
+		s.last = s.first + countLines(s.cur)
 		return s.cur, nil
 	}
 
@@ -85,13 +84,19 @@ func (s *Scanner) Next() ([]byte, error) {
 	}
 	s.cur = s.buf.Next(n)
 	s.end += int64(len(s.cur))
+	s.last = s.first + countLines(s.cur)
 	return s.cur, nil
 }
 
-// Span reports the starting and ending offsets of the most recent message
-// reported by a successful call to [Scanner.Next] in the input. If Next has
-// not been called, it returns 0, 0.
+// Span reports the starting and ending offsets (0-based) of the most recent
+// message reported by a successful call to [Scanner.Next] in the input.
+// If Next has not been called, it returns 0, 0.
 func (s *Scanner) Span() (from, to int64) { return s.pos, s.end }
+
+// Lines reports the starting and ending line numbers (1-based) of the most
+// recent message reporte by a successful call to [Scanner.Next] in the input.
+// If Next has not been called, it returns 0, 0.
+func (s *Scanner) Lines() (first, last int) { return s.first, s.last }
 
 // A Message is the parsed representation of a mail message from an mbox file.
 type Message struct {
@@ -173,4 +178,15 @@ func cutAfter(s, sep []byte) (first, rest []byte) {
 	}
 	end := i + len(sep)
 	return s[:end], s[end:]
+}
+
+// countLines reports the number of lines in data, where line is a span of text
+// ending with a newline. If atEOF is true, a trailing newline is not counted.
+func countLines(data []byte) int {
+	n := bytes.Count(data, []byte("\n"))
+	// Do not count the trailing newline of the segment as an additional line.
+	if len(data) != 0 && data[len(data)-1] == '\n' {
+		return n - 1 // do not count the trailing
+	}
+	return n
 }

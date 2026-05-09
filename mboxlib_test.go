@@ -24,28 +24,29 @@ var testData []byte
 type hdrs = map[string]string
 
 var tests = []struct {
-	pos, end  int64
-	bodyStart int
-	headers   hdrs
-	body      []string
+	pos, end    int64 // byte offsets, 0-based
+	bodyStart   int
+	first, last int // line numbers, 1-based
+	headers     hdrs
+	body        []string
 }{
 	// The file offsets and probe strings were computed by hand.
 	// If you edit the test.mbox, you will to update these test cases.
 	// There must be exactly as many entries in this slice as messages.
-	{0, 5011, 1590, hdrs{
+	{0, 5011, 1590, 1, 108, hdrs{
 		"subject": "Subversion 1.6.13 Released",
 		"sender":  "hyrum@hyrumwright.org",
 		"list-id": "<announce.apache.org>",
 	}, []string{
 		"subversion-1.6.13.tar.bz2", "5329 FCFD 6305 9821 F7B2",
 	}},
-	{5011, 7539, 1670, hdrs{
+	{5011, 7539, 1670, 109, 168, hdrs{
 		"precedence": "bulk",
 		"reply-to":   "jplevyak@apache.org",
 	}, []string{
 		"http://trafficserver.apache.org/downloads.html",
 	}},
-	{7539, 10737, 1382, hdrs{
+	{7539, 10737, 1382, 169, 244, hdrs{
 		"x-spam-check-by": "apache.org",
 		"to":              "announce@apache.org",
 		"from":            "Niklas Gustavsson <ngn@apache.org>",
@@ -53,14 +54,14 @@ var tests = []struct {
 		"[FTPSERVER-356] - Incorrect pom.xml on trunk",
 		"The Apache MINA project\n\n", // at the end of the message
 	}},
-	{10737, 16212, 2478, hdrs{"date": "Mon, 4 Oct 2010 10:41:18 -0400"}, []string{
+	{10737, 16212, 2478, 245, 369, hdrs{"date": "Mon, 4 Oct 2010 10:41:18 -0400"}, []string{
 		"\n   (See CHANGES-APR-UTIL-1.3 for more information.)", // N.B. indented
 	}},
-	{16212, 22712, 2522, hdrs{"from": "Sally Khudairi <sk@apache.org>"}, []string{
+	{16212, 22712, 2522, 370, 470, hdrs{"from": "Sally Khudairi <sk@apache.org>"}, []string{
 		"Thought Leaders Dana Blankenho=\nrn of ZDNet",       // quoted-printable EOL
 		"@TheASF feed on Twitter.=0A=0A# # #=0A=0A=0A      ", // spaces at EOL
 	}},
-	{22712, 28706, 1595, hdrs{"subject": "[ANN] Apache Maven 3.0 Released"}, []string{
+	{22712, 28706, 1595, 471, 607, hdrs{"subject": "[ANN] Apache Maven 3.0 Released"}, []string{
 		"     * [MNG-4836] - Incorrect recursive expression cycle errors (update \nplexus-interpolation)",
 	}},
 }
@@ -81,10 +82,14 @@ func TestScanner(t *testing.T) {
 
 		// Check that the scanner reports the expected offsets.
 		pos, end := s.Span()
-		t.Logf("index %d: message %d..%d (%d bytes)", i, pos, end, len(m))
+		first, last := s.Lines()
+		t.Logf("index %d: message %d..%d lines %d..%d (%d bytes)", i, pos, end, first, last, len(m))
 
 		if pos != tc.pos || end != tc.end {
 			t.Errorf("index %d: got offsets %d..%d, want %d..%d", i, pos, end, tc.pos, tc.end)
+		}
+		if first != tc.first || last != tc.last {
+			t.Errorf("index %d: got lines %d..%d, want %d..%d", i, first, last, tc.first, tc.last)
 		}
 
 		// Check for certain interesting strings in the message text.
