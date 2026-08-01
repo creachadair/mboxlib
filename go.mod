@@ -3,7 +3,7 @@ module github.com/creachadair/mboxlib
 go 1.26
 
 require (
-	github.com/creachadair/mds v0.30.2
+	github.com/creachadair/mds v0.30.5
 	github.com/google/go-cmp v0.7.0
 )
 
