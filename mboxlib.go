@@ -160,8 +160,7 @@ func (c *countReader) Read(out []byte) (int, error) {
 	if len(c.data) == 0 {
 		return 0, io.EOF
 	}
-	nr := min(len(c.data), len(out))
-	copy(out, c.data[:nr])
+	nr := copy(out, c.data)
 	c.data = c.data[nr:]
 	c.numRead += nr
 	return nr, nil
